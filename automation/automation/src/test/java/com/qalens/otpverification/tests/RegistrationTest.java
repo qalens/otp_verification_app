@@ -18,7 +18,7 @@ public class RegistrationTest {
     @BeforeEach
     public void setUp(){
         driver=new ChromeDriver();
-        otpReader = OTPReader.getReader();
+        otpReader = OTPReader.get();
     }
     @Test
     public void successfulRegistration(){
@@ -26,7 +26,8 @@ public class RegistrationTest {
                 .launch(driver)
                 .signUp("Atmaram","Naik", emailId)
                 .provideCorrectOTPAndSubmit(otpReader.getLatestOTP(emailId))
-                .getMessage();
+                .getDisplayedMessage();
+
         assertEquals(message,"Registration is successful","Registration Completed");
     }
     @AfterEach

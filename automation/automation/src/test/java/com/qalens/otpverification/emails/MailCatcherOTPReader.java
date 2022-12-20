@@ -79,7 +79,12 @@ public class MailCatcherOTPReader implements OTPReader{
                 .body()
                 .jsonPath().getList(".",MessageSummary.class);
 
-        MessageSummary filteredMessage = messages.stream().filter(m->m.created_at.after(startDateTime)).sorted(Comparator.comparing(a -> a.created_at)).reduce((a, b) -> b).orElse(null);
+        MessageSummary filteredMessage = messages
+                .stream()
+                .filter(m->m.created_at.after(startDateTime))
+                .sorted(Comparator.comparing(a -> a.created_at))
+                .reduce((a, b) -> b)
+                .orElse(null);
 
         String contentFormat=given(this.mailcatcherAPIs)
                 .get(String.format("/messages/%s.json",filteredMessage.id))
@@ -94,9 +99,9 @@ public class MailCatcherOTPReader implements OTPReader{
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(content);
         while (matcher.find()){
-            String fstr = matcher.group();
-            if (fstr.length()==6){
-                return fstr;
+            String matchedGroup = matcher.group();
+            if (matchedGroup.length()==6){
+                return matchedGroup;
             }
         }
         return null;

@@ -13,7 +13,7 @@ public class RegistrationSuccessPage extends BasePage {
         return page;
     }
 
-    public String getMessage() {
+    public String getDisplayedMessage() {
         return this.registrationStatusMessage.getText();
     }
 }

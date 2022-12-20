@@ -1,7 +1,7 @@
 package com.qalens.otpverification.emails;
 
 public interface OTPReader {
-    static OTPReader getReader() {
+    static OTPReader get() {
         String otpReader = System.getenv("OTP_READER");
         if (otpReader==null || otpReader.equals("mailcatcher")){
             return new MailCatcherOTPReader();
