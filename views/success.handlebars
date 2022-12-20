@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="brand"><span>Welcome User </span> Sign-up</h1>
+    <h1 class="brand"><span>Welcome User </span> Registration Status</h1>
     <div class="wrapper">
       <div class="company-info">
         <h3>QA Lens</h3>
@@ -20,23 +20,7 @@
         </ul>
       </div>
       <div class="contact">
-        {{msg}}
-        <form method="POST" action="verify">
-          <p>
-            <label>Enter otp</label>
-            <input type="text" name="otp" required>
-          </p>
-          
-          <p class="full">
-            <button type="submit" id="submitotp">Submit</button>
-          </p>
-
-        </form>
-        <br>
-        <form method="POST" action="resend">
-          <p class="full">
-            <button type="submit" id="resendotp">resend otp</button>
-          </p>    
+        <span id="status-message">Registration is successful</spab>   
       </div>
     </div>
   </div>

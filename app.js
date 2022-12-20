@@ -43,7 +43,7 @@ app.post('/send',function(req,res){
     var mailOptions={
         from: process.env.FROM,
         to: req.body.email,
-        subject: "Otp for registration is: ",
+        subject: "Otp for registration is",
         html: "<h3>OTP for account verification is </h3>"  + "<h1 style='font-weight:bold;'>" + getNewOtp() +"</h1>" // html body
      };
      
@@ -61,7 +61,7 @@ app.post('/send',function(req,res){
 app.post('/verify',function(req,res){
 
     if(req.body.otp==otp){
-        res.send("You has been successfully registered");
+        res.render('success');
     }
     else{
         res.render('otp',{msg : 'otp is incorrect'});
@@ -70,9 +70,10 @@ app.post('/verify',function(req,res){
 
 app.post('/resend',function(req,res){
     var mailOptions={
+        from: process.env.FROM,
         to: email,
-       subject: "Otp for registration is: ",
-       html: "<h3>OTP for account verification is </h3>"  + "<h1 style='font-weight:bold;'>" + otp +"</h1>" // html body
+        subject: "Otp for registration is",
+        html: "<h3>OTP for account verification is </h3>"  + "<h1 style='font-weight:bold;'>" + otp +"</h1>"
      };
      
      transporter.sendMail(mailOptions, (error, info) => {
