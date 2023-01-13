@@ -6,9 +6,6 @@ plugins {
 
 group 'com.qalens.otpverification'
 version '1.0-SNAPSHOT'
-allure {
-    value = "2.20.1"
-}
 repositories {
     mavenCentral()
 }
